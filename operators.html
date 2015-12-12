@@ -1,13 +1,13 @@
 ---
 layout: default
 ---
-<h1>Operator precedences</h3>
+<h1>Operator precedences and associativities</h3>
 <table class="precedence">
   <thead>
     <tr>
-      <th>prec</th>
-      <th>left assoc</th>
-      <th>right assoc</th>
+      <th>precedence</th>
+      <th>left associative</th>
+      <th>right associative</th>
     </tr>
   </thead>
   <tbody>
@@ -64,9 +64,17 @@ layout: default
 
 <br>
 <p>
+  The above lists the core infix operators in descending order of precedence.
   Function application (by adjacency) is higher priority than all operators.
 </p>
 <p name="nonassoc">
   *
   The comparison operators (precedence 4) are non-associative.
 </p>
+<p>
+  This is based on
+  <a href="https://github.com/elm-lang/core/blob/master/src/Basics.elm">Basics.elm</a>
+  and
+  <a href="https://github.com/elm-lang/core/blob/master/src/List.elm">List.elm</a>.
+</p>
+
