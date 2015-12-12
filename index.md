@@ -53,25 +53,8 @@ It has lower precedence than function application and so it can be used instead 
 
 ### What are the Elm operator precedences?
 
-prec | operators
----- | ---------
-  9  | `<<` `>>`
-  8  | `^`
-  7  | `*` `/` `//` `%` `rem`
-  6  | `+` `-`
-  5  | `++` `::`
-  4  | `==` `/=` `<` `>` `<=` `>=`
-  3  | `&&`
-  2  | `||`
-  0  | `<|` `|>`
-
-<!-- TODO: indicate associativity in the table? -->
-
-Function application (by adjacency) is higher priority than any operators and associates left.
-
-The default is left-associative.
-Several operators are right-associative: `^`, `++`, `::`, `&&`, `||`, `<<`, and `<|`.
-The comparison operators (precedence 4) are non-associative. See [Basics.elm](https://github.com/elm-lang/core/blob/master/src/Basics.elm).
+See an [Elm operator precedence table](operators.html).
+See also [Basics.elm](https://github.com/elm-lang/core/blob/master/src/Basics.elm).
 
 ### How can I join the elmlang.slack.com community?
 Sign up at [elmlang.herokuapp.com](http://elmlang.herokuapp.com/).

@@ -1,0 +1,72 @@
+---
+layout: default
+---
+<h1>Operator precedences</h3>
+<table class="precedence">
+  <thead>
+    <tr>
+      <th>prec</th>
+      <th>left assoc</th>
+      <th>right assoc</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>9</td>
+      <td><code>>></code></td>
+      <td><code>&lt;&lt;</code></td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td></td>
+      <td><code>^</code></td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td><code>*</code> <code>/</code> <code>//</code> <code>%</code> <code>rem</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td><code>+</code> <code>&minus;</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td></td>
+      <td><code>++</code> <code>::</code></td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td colspan="2" style="text-align: center">
+	<code>==</code> <code>/=</code> <code>&lt;</code> <code>></code>
+	<code>&lt;=</code> <code>>=</code>
+	<sup><a href="#nonassoc">*</a></sup>
+      </td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td></td>
+      <td><code>&amp;&amp;</code></td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td></td>
+      <td><code>||</code></td>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td><code>|></code></td>
+      <td><code>&lt;|</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+<p>
+  Function application (by adjacency) is higher priority than all operators.
+</p>
+<p name="nonassoc">
+  *
+  The comparison operators (precedence 4) are non-associative.
+</p>
