@@ -56,5 +56,17 @@ It has lower precedence than function application and so it can be used instead 
 See an [Elm operator precedence table](operators.html).
 See also [Basics.elm](https://github.com/elm-lang/core/blob/master/src/Basics.elm).
 
+### Why isn't my StartApp-based program running any tasks?
+
+You need to set `app.port`.
+
+    port tasks : Signal (Task.Task Never ())
+    port tasks =
+        app.tasks
+
+### Why doesn't the `<~` operator work?
+
+It was removed in Elm version 0.16. You might use [`andMap`](http://package.elm-lang.org/packages/elm-lang/core/3.0.0/Task#andMap) instead.
+
 ### How can I join the elmlang.slack.com community?
 Sign up at [elmlang.herokuapp.com](http://elmlang.herokuapp.com/).
