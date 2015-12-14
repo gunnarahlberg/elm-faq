@@ -66,7 +66,9 @@ You need to set `app.port`.
 
 ### Why doesn't the `<~` operator work?
 
-It was removed in Elm version 0.16. You might use [`andMap`](http://package.elm-lang.org/packages/elm-lang/core/3.0.0/Task#andMap) instead.
+It was removed in Elm version 0.16. You might use `andMap` from
+[Signal.Extra](http://package.elm-lang.org/packages/Apanatshka/elm-signal-extra/5.7.0/Signal-Extra#andMap)
+instead.
 
 ### How can I join the elmlang.slack.com community?
 Sign up at [elmlang.herokuapp.com](http://elmlang.herokuapp.com/).
