@@ -3,6 +3,7 @@ title: Elm FAQ
 layout: page
 ---
 Here are some common questions that I've seen on the Elm IRC channel and on the mailing lists.
+Contributions to [this document](https://github.com/fredcy/elm-faq) are welcome.
 
 ### Why does elm-repl (or elm-make) report "cannot find module 'Html'"?
 You need to install the Html module:
@@ -24,6 +25,10 @@ Search on [package.elm-lang.org](http://package.elm-lang.org/) for the module na
 Wrap any value with `Debug.log “some message”` and that message and the value will be written to the javascript console every time the value is evaluated. For example:
 
     case Debug.log "action" action of
+
+If you want to just log a message and value without using that value, try this in a `let` clause:
+
+    _ = Debug.log "my message" someValue
 
 ### How do I generate an Action as an Effect?
 

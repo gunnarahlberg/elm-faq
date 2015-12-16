@@ -3,7 +3,6 @@ title: Elm (language) FAQ
 email: fredcy@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
   Unofficial FAQ for the Elm language.
-  <a href="https://github.com/fredcy/elm-faq">Contributions</a> are welcome.
 baseurl: "/elm-faq" # the subpath of your site, e.g. /blog/
 #url: "http://yourdomain.com" # the base hostname & protocol for your site
 twitter_username: fredcy
