@@ -75,5 +75,11 @@ It was removed in Elm version 0.16. You might use `andMap` from
 [Signal.Extra](http://package.elm-lang.org/packages/Apanatshka/elm-signal-extra/5.7.0/Signal-Extra#andMap)
 instead.
 
+### How can I use multiple Elm programs on the same page?
+
+You can compile multiple modules into a single elm.js and then instantiate whatever module you need on the appropriate div. [\[ref\]](https://groups.google.com/forum/#!topic/elm-discuss/RRMuPtypvIk)
+
+    elm-make A.elm B.elm --output elm.js
+
 ### How can I join the elmlang.slack.com community?
 Sign up at [elmlang.herokuapp.com](http://elmlang.herokuapp.com/).
