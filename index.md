@@ -54,7 +54,7 @@ It is the empty tuple or [unit type](https://en.wikipedia.org/wiki/Unit_type). I
 
 ### What good is the `<|` operator if it is just function application?
 
-It has lower precedence than function application and so it can be used instead of parentheses to group function arguments. For example, `a b (c d)` is the same as `a b <| c d`.  More concretely, `max 3 (sqrt 25)` can be written as `max 3 <| sqrt 25`.
+It has lower precedence than function application expressed by adjacency (e.g. `sqrt x`) and so it can be used instead of parentheses to group function arguments. For example, `a b (c d)` is the same as `a b <| c d`.  More concretely, `max 3 (sqrt x)` can be written as `max 3 <| sqrt x`.
 
 ### What are the Elm operator precedences?
 
