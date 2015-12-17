@@ -1,8 +1,7 @@
 # elm-faq
 ## FAQ about the Elm language.
 
-Here are some questions that I've seen on the #elm IRC channel on freenode and some questions that stumped me for a while.
+Here are some questions often seen on the #elm IRC channel on freenode
+and on the [elm-discuss](https://groups.google.com/forum/#!forum/elm-discuss) group.
 
-I welcome any contributions as pull requests.
-
-This is unofficial, not approved by anyone of authority in the Elm community.
+We welcome contributions as pull requests.
