@@ -2,8 +2,8 @@
 title: Elm FAQ
 layout: page
 ---
-Here are some common questions that I've seen on the Elm IRC channel and on the mailing lists.
-Contributions to [this document](https://github.com/fredcy/elm-faq) are welcome.
+Here are some common questions on the Elm IRC channel and on the mailing lists.
+Contributions to [this document](https://github.com/elm-community/elm-faq) are welcome.
 
 ### Why does elm-repl (or elm-make) report "cannot find module 'Html'"?
 You need to install the Html module:
