@@ -5,6 +5,14 @@ layout: page
 Here are some common questions on the Elm IRC channel and on the mailing lists.
 Contributions to [this document](https://github.com/elm-community/elm-faq) are welcome.
 
+### What is the difference between `type` and `type alias`?
+
+`type` defines and names a new type (which behaves like an enum with data
+attached), and `type alias` gives a name to an existing type.
+
+`type alias` isn't creating a distinct type, it is literally just giving a name to an existing type. A type alias will save you keystrokes, but do nothing more. [ref](https://groups.google.com/forum/#!topic/elm-discuss/YgRqI5s2S7Y)
+
+
 ### Why does elm-repl (or elm-make) report "cannot find module 'Html'"?
 You need to install the Html module:
 
