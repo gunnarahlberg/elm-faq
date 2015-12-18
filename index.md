@@ -30,6 +30,9 @@ If you want to just log a message and value without using that value, try this i
 
     _ = Debug.log "my message" someValue
 
+Also see [`Debug.crash`](http://package.elm-lang.org/packages/elm-lang/core/latest/Debug#crash)
+which gets special treatment from the compiler to provide additional information in the output.
+
 ### How do I generate an Action as an Effect?
 
     Effects.task (Task.succeed SomeAction)
