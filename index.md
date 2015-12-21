@@ -92,5 +92,12 @@ You can compile multiple modules into a single elm.js and then instantiate whate
 
     elm-make A.elm B.elm --output elm.js
 
+### Why doesn't the Elm compiler find the Native code in a module that I cloned from github?
+
+To use native code not installed by `elm-package` you need to add this to your elm-package.json file:
+
+    "native-modules": true,
+
+
 ### How can I join the elmlang.slack.com community?
 Sign up at [elmlang.herokuapp.com](http://elmlang.herokuapp.com/).
