@@ -82,8 +82,8 @@ You need to set `app.port`.
 
 ### Why doesn't the `<~` operator work?
 
-It was removed in Elm version 0.16. You might use `andMap` from
-[Signal.Extra](http://package.elm-lang.org/packages/Apanatshka/elm-signal-extra/5.7.0/Signal-Extra#andMap)
+It was removed in Elm version 0.16. You can still get it (or the equivalent `andMap`) from
+[Signal.Extra](http://package.elm-lang.org/packages/Apanatshka/elm-signal-extra/latest/Signal-Extra)
 instead.
 
 ### How can I use multiple Elm programs on the same page?
