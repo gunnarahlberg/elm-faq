@@ -98,6 +98,17 @@ To use native code not installed by `elm-package` you need to add this to your e
 
     "native-modules": true,
 
+### Why, when I import a module that defines a type, does the compiler know about the type name but not its constructors?
+
+You need to import the module like this:
+
+    import MyModule exposing (MyType(..))
+
+Just exposing `MyType` without the `(..)` will leave the constructors undefined.
+
+Simillarly, the module itself must export the constructors.
+
+    module MyModule (MyType(..)) where
 
 ### How can I join the elmlang.slack.com community?
 Sign up at [elmlang.herokuapp.com](http://elmlang.herokuapp.com/).
