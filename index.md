@@ -110,5 +110,18 @@ Simillarly, the module itself must export the constructors.
 
     module MyModule (MyType(..)) where
 
+However, there are reasons for [keeping tags and record constructors secret](http://package.elm-lang.org/help/design-guidelines#keep-tags-and-record-constructors-secret).
+
+### Where can I use type annonations?
+
+In addition to the top-level, type annotations can also be applied to `let` expressions.
+
+    let
+      hypotenuse : Float -> Float -> Float
+      hypotenuse a b =
+        sqrt (a^2 + b^2)
+    in
+      hypotenuse 3 4
+
 ### How can I join the elmlang.slack.com community?
 Sign up at [elmlang.herokuapp.com](http://elmlang.herokuapp.com/).
