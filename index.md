@@ -125,3 +125,9 @@ In addition to the top-level, type annotations can also be applied to `let` expr
 
 ### How can I join the elmlang.slack.com community?
 Sign up at [elmlang.herokuapp.com](http://elmlang.herokuapp.com/).
+
+### How can I recover when elm-make fails with errors like "... openFile: does not exist"?
+
+That can happen when switching between elm versions. Try removing all of elm-stuff or just the build-artifacts:
+
+    rm -r elm-stuff/build-artifacts
