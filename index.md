@@ -32,11 +32,15 @@ Search on [package.elm-lang.org](http://package.elm-lang.org/) for the module na
 ### How can I write debugging information to the console?
 Wrap any value with `Debug.log “some message”` and that message and the value will be written to the javascript console every time the value is evaluated. For example:
 
-    case Debug.log "action" action of
+{% highlight haskell %}
+case Debug.log "action" action of
+{% endhighlight %}
 
 If you want to just log a message and value without using that value, try this in a `let` clause:
 
-    _ = Debug.log "my message" someValue
+{% highlight haskell %}
+_ = Debug.log "my message" someValue
+{% endhighlight %}
 
 Also see [`Debug.crash`](http://package.elm-lang.org/packages/elm-lang/core/latest/Debug#crash)
 which gets special treatment from the compiler to provide additional information in the output.
@@ -57,7 +61,9 @@ A common idiom is to define the `(=>)` operator as a synonym for the `(,)` opera
 ### How can I output literal HTML and avoid escaping of entities?
 Use the `innerHTML` property. For example:
 
-    span [ property "innerHTML" (Json.Encode.string "&copy;") ] []
+{% highlight haskell %}
+span [ property "innerHTML" (Json.Encode.string "&copy;") ] []
+{% endhighlight %}
 
 ### What does `()` mean?
 
@@ -76,9 +82,11 @@ See also [Basics.elm](https://github.com/elm-lang/core/blob/master/src/Basics.el
 
 You need to set `app.port`.
 
-    port tasks : Signal (Task.Task Never ())
-    port tasks =
-        app.tasks
+{% highlight haskell %}
+port tasks : Signal (Task.Task Never ())
+port tasks =
+    app.tasks
+{% endhighlight %}
 
 ### Why doesn't the `<~` operator work?
 
@@ -116,12 +124,14 @@ However, there are reasons for [keeping tags and record constructors secret](htt
 
 In addition to the top-level, type annotations can also be applied to `let` expressions.
 
-    let
-      hypotenuse : Float -> Float -> Float
-      hypotenuse a b =
-        sqrt (a^2 + b^2)
-    in
-      hypotenuse 3 4
+{% highlight haskell %}
+let
+  hypotenuse : Float -> Float -> Float
+  hypotenuse a b =
+    sqrt (a^2 + b^2)
+in
+  hypotenuse 3 4
+{% endhighlight %}
 
 ### How can I join the elmlang.slack.com community?
 Sign up at [elmlang.herokuapp.com](http://elmlang.herokuapp.com/).
