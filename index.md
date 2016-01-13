@@ -147,3 +147,30 @@ That can happen when switching between elm versions. Try removing all of elm-stu
 ### How do I install an Elm package that has not been published to packages.elm-lang.org for use in my project?
 
 Clone the package into a separate directory and add its directory path to the `source-directories` section of the elm-package.json file for your project. As usual, you will also have to install any dependencies of the package. If the package includes any native javascript code you will have to also add `native-module: true` to elm-package.json.
+
+### Why doesn't my application get the intial value of Window.dimensions?
+
+For example, given this:
+
+{% highlight haskell %}
+modelInit = { window = (-1,-1) }
+
+main = Signal.map Element.show model
+
+model = Signal.foldp (\d s -> {s | window = d}) modelInit Window.dimensions
+{% endhighlight %}
+
+the displayed value will remain at "{ window = (-1,-1) }" until the window is resized, at which time the display tracks all changes.
+
+This arises because `Signal.foldp` does not use the initial value of its input signal (`Window.dimensions` in this case).
+
+One solution is to use the `foldp'` function from the Apanatshka/elm-signal-extra package, as follows:
+
+{% highlight haskell %}
+model = Signal.Extra.foldp' (\d s -> {s | window <- d}) (\d -> { window = d }) Window.dimensions
+{% endhighlight %}
+
+Whereas `foldp` takes an initial value parameter, `foldp'` takes instead a function from the initial value of the input signal to the initial value returned by `foldp'`.
+
+Since StartApp uses `foldp` this problem with initial values can arise when it is used. Also, the problem is not specific to Window.dimensions; it can arise for any input signal whose initial value is of interest.
+
