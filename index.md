@@ -98,7 +98,8 @@ instead.
 
 ### How can I use multiple Elm programs on the same page?
 
-You can compile multiple modules into a single elm.js and then instantiate whatever module you need on the appropriate div. [\[ref\]](https://groups.google.com/forum/#!topic/elm-discuss/RRMuPtypvIk)
+You can compile multiple modules into a single elm.js and then instantiate whatever module you need on the appropriate div.
+[\[ref\]](https://groups.google.com/d/msg/elm-discuss/eEJgNnl99ps/keWXnn1KCwAJ).
 
     elm-make A.elm B.elm --output elm.js
 
@@ -126,14 +127,14 @@ However, there are reasons for [keeping tags and record constructors secret](htt
 
 In addition to the top-level, type annotations can also be applied to `let` expressions.
 
-{% highlight haskell %}
+```haskell
 let
   hypotenuse : Float -> Float -> Float
   hypotenuse a b =
     sqrt (a^2 + b^2)
 in
   hypotenuse 3 4
-{% endhighlight %}
+```
 
 ### How can I join the elmlang.slack.com community?
 Sign up at [elmlang.herokuapp.com](http://elmlang.herokuapp.com/).
@@ -148,17 +149,17 @@ That can happen when switching between elm versions. Try removing all of elm-stu
 
 Clone the package into a separate directory and add its directory path to the `source-directories` section of the elm-package.json file for your project. As usual, you will also have to install any dependencies of the package. If the package includes any native javascript code you will have to also add `native-module: true` to elm-package.json.
 
-### Why doesn't my application get the intial value of Window.dimensions?
+### Why doesn't my application get the initial value of Window.dimensions?
 
 For example, given this:
 
-{% highlight haskell %}
+```haskell
 modelInit = { window = (-1,-1) }
 
 main = Signal.map Element.show model
 
 model = Signal.foldp (\d s -> {s | window = d}) modelInit Window.dimensions
-{% endhighlight %}
+```
 
 the displayed value will remain at "{ window = (-1,-1) }" until the window is resized, at which time the display tracks all changes.
 

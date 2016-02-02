@@ -8,3 +8,11 @@ github_username:  elm-community
 
 # Build settings
 markdown: kramdown
+
+# The following are supposed to be defaults per
+# https://help.github.com/articles/using-jekyll-with-pages/ but as of 2016-02-02
+# I have to set them explicitly for correct output.
+kramdown:
+  input: GFM
+  hard_wrap: false
+  
