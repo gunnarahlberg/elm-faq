@@ -71,11 +71,11 @@ It is the empty tuple or [unit type](https://en.wikipedia.org/wiki/Unit_type). I
 
 ### What good is the `<|` operator if it is just function application?
 
-It has lower precedence than function application expressed by adjacency (e.g. `sqrt x`) and so it can be used instead of parentheses to group function arguments. For example, `a b (c d)` is the same as `a b <| c d`.  More concretely, `max 3 (sqrt x)` can be written as `max 3 <| sqrt x`.
+It has lower precedence than function application expressed by adjacency (e.g. `sqrt x`) and is righ-associative, and so it can be used instead of parentheses to group function arguments. For example, `a b ( c d )` is the same as `a b <| c d`, and `f ( g ( h x ) ) )` can be written as `f <| g <| h x`.  More concretely, `max 3 (sqrt x)` can be written as `max 3 <| sqrt x`. [^application]
 
 Note: The `<|` operator is essentially the same as `$` in Haskell.
 
-### What are the Elm operator precedences?
+### What are the Elm operator precedences and associativities?
 
 See an [Elm operator precedence table](operators.html).
 See also [Basics.elm](https://github.com/elm-lang/core/blob/master/src/Basics.elm).
@@ -188,3 +188,7 @@ The [json-to-elm](https://github.com/eeue56/json-to-elm) tool is a Python script
 There are additional Json parsing tools in the [elm-json-extra](http://package.elm-lang.org/packages/circuithub/elm-json-extra/latest/Json-Decode-Extra) package.
 
 The [Elm Json Decode interpreter](http://simonh1000.github.io/decoder/) is an online tool allowing you to experiment with decoders and test them in a simple context.
+
+## Footnotes
+
+[^application]: Function application and the `<|` operator are discussed at some length [here](https://groups.google.com/d/msg/elm-discuss/-PLj_eamKVQ/Zzo7iNx2FgAJ).

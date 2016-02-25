@@ -65,7 +65,10 @@ layout: default
 <br>
 <p>
   The above lists the core infix operators in descending order of precedence.
-  Function application (by adjacency) is higher priority than all operators.
+</p>
+<p>
+  Function application (by adjacency) is higher priority than all operators and
+  is left-associative:<br> <code>f g h x</code> is interpreted as <code>((f g) h) x</code>.
 </p>
 <p name="nonassoc">
   *
