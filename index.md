@@ -73,6 +73,8 @@ It is the empty tuple or [unit type](https://en.wikipedia.org/wiki/Unit_type). I
 
 It has lower precedence than function application expressed by adjacency (e.g. `sqrt x`) and is righ-associative, and so it can be used instead of parentheses to group function arguments. For example, `a b ( c d )` is the same as `a b <| c d`, and `f ( g ( h x ) ) )` can be written as `f <| g <| h x`.  More concretely, `max 3 (sqrt x)` can be written as `max 3 <| sqrt x`. [^application]
 
+[^application]: Function application and the `<|` operator are discussed at some length [here](https://groups.google.com/d/msg/elm-discuss/-PLj_eamKVQ/Zzo7iNx2FgAJ).
+
 Note: The `<|` operator is essentially the same as `$` in Haskell.
 
 ### What are the Elm operator precedences and associativities?
@@ -98,10 +100,11 @@ instead.
 
 ### How can I use multiple Elm programs on the same page?
 
-You can compile multiple modules into a single elm.js and then instantiate whatever module you need on the appropriate div.
-[\[ref\]](https://groups.google.com/d/msg/elm-discuss/eEJgNnl99ps/keWXnn1KCwAJ).
+You can compile multiple modules into a single elm.js and then instantiate whatever module you need on the appropriate div. [^multipleModules]
 
     elm-make A.elm B.elm --output elm.js
+
+[^multipleModules]: Use of multiple main modules in one application is discussed [here](https://groups.google.com/d/msg/elm-discuss/eEJgNnl99ps/keWXnn1KCwAJ).
 
 ### Why doesn't the Elm compiler find the Native code in a module that I cloned from github?
 
@@ -191,4 +194,3 @@ The [Elm Json Decode interpreter](http://simonh1000.github.io/decoder/) is an on
 
 ## Footnotes
 
-[^application]: Function application and the `<|` operator are discussed at some length [here](https://groups.google.com/d/msg/elm-discuss/-PLj_eamKVQ/Zzo7iNx2FgAJ).
