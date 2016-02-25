@@ -32,15 +32,15 @@ Search on [package.elm-lang.org](http://package.elm-lang.org/) for the module na
 ### How can I write debugging information to the console?
 Wrap any value with `Debug.log “some message”` and that message and the value will be written to the javascript console every time the value is evaluated. For example:
 
-{% highlight haskell %}
+```haskell
 case Debug.log "action" action of
-{% endhighlight %}
+```
 
 If you want to just log a message and value without using that value, try this in a `let` clause:
 
-{% highlight haskell %}
+```haskell
 _ = Debug.log "my message" someValue
-{% endhighlight %}
+```
 
 Also see [`Debug.crash`](http://package.elm-lang.org/packages/elm-lang/core/latest/Debug#crash)
 which gets special treatment from the compiler to provide additional information in the output.
@@ -61,9 +61,9 @@ A common idiom is to define the `(=>)` operator as a synonym for the `(,)` opera
 ### How can I output literal HTML and avoid escaping of entities?
 Use the `innerHTML` property. For example:
 
-{% highlight haskell %}
+```haskell
 span [ property "innerHTML" (Json.Encode.string "&copy;") ] []
-{% endhighlight %}
+```
 
 ### What does `()` mean?
 
@@ -84,11 +84,11 @@ See also [Basics.elm](https://github.com/elm-lang/core/blob/master/src/Basics.el
 
 You need to set `app.port`.
 
-{% highlight haskell %}
+```haskell
 port tasks : Signal (Task.Task Never ())
 port tasks =
     app.tasks
-{% endhighlight %}
+```
 
 ### Why doesn't the `<~` operator work?
 
@@ -167,11 +167,23 @@ This arises because `Signal.foldp` does not use the initial value of its input s
 
 One solution is to use the `foldp'` function from the Apanatshka/elm-signal-extra package, as follows:
 
-{% highlight haskell %}
+```haskell
 model = Signal.Extra.foldp' (\d s -> {s | window <- d}) (\d -> { window = d }) Window.dimensions
-{% endhighlight %}
+```
 
 Whereas `foldp` takes an initial value parameter, `foldp'` takes instead a function from the initial value of the input signal to the initial value returned by `foldp'`.
 
 Since StartApp uses `foldp` this problem with initial values can arise when it is used. Also, the problem is not specific to Window.dimensions; it can arise for any input signal whose initial value is of interest.
+
+### How can I parse Json into Elm data?
+
+Currently you have to write the [parsing
+code](http://package.elm-lang.org/packages/elm-lang/core/latest/Json-Decode).
+Other than for [data passed over ports](http://elm-lang.org/guide/interop#customs-and-border-protection) there is no automatic conversion (and even
+there, experts recommend writing the parser manually to be able to handle error
+cases).
+
+The [json-to-elm](https://github.com/eeue56/json-to-elm) tool is a Python script that generates Elm code to parse a given example of Json.
+
+
 
