@@ -192,5 +192,14 @@ There are additional Json parsing tools in the [elm-json-extra](http://package.e
 
 The [Elm Json Decode interpreter](http://simonh1000.github.io/decoder/) is an online tool allowing you to experiment with decoders and test them in a simple context.
 
+### How can I report a compiler error message that could be better?
+
+Report the problem at the [error-message-catalog issue tracker](https://github.com/elm-lang/error-message-catalog/issues)
+with an [short, self-contained, correct, example](http://sscce.org/) showing both the program and the problematic error messages.
+
+### Does Elm have HashMaps?
+
+The core [Dict](http://package.elm-lang.org/packages/elm-lang/core/latest/Dict) package provides a dictionary mapping unique keys to values. There are some restrictions on key value types; in particular, records cannot be keys.
+
 ## Footnotes
 
