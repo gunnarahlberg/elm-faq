@@ -201,5 +201,17 @@ with an [short, self-contained, correct, example](http://sscce.org/) showing bot
 
 The core [Dict](http://package.elm-lang.org/packages/elm-lang/core/latest/Dict) package provides a dictionary mapping unique keys to values. There are some restrictions on key value types; in particular, records cannot be keys.
 
+### Why is my app failing immediately saying "Cannot read property 'make' of undefined"?
+
+That can happen if you write custom Javascript code to call `Elm.embed()` or `Elm.fullscreen()` and the application name used there (the first parameter) does not match the main module name.
+
+For example, if Foo.elm contains the `main` function for your app then your Javascript code should call it like this:
+
+```javascript
+app = Elm.embed(Elm.Foo, ...)
+```
+
+If you use a name other than `Elm.Foo` there you will likely get that "Cannot read property" error.
+
 ## Footnotes
 
