@@ -126,7 +126,7 @@ Simillarly, the module itself must export the constructors.
 
 However, there are reasons for [keeping tags and record constructors secret](http://package.elm-lang.org/help/design-guidelines#keep-tags-and-record-constructors-secret).
 
-### Where can I use type annonations?
+### Where can I use type annotations?
 
 In addition to the top-level, type annotations can also be applied to `let` expressions.
 
