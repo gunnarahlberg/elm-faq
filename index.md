@@ -58,6 +58,8 @@ If you need to switch between multiple versions of elm, consider [elmenv](https:
 ### What does `=>` mean?
 A common idiom is to define the `(=>)` operator as a synonym for the `(,)` operator that constructs tuples. This makes a shorthand for long lists of tuple pairs, often used with the Html.style property.  So `["color" => "red", "padding" => "2px"]` means `[("color", "red"), ("padding", "2px")]`.
 
+Note: Operators cannot be defined in elm-repl.
+
 ### How can I output literal HTML and avoid escaping of entities?
 Use the `innerHTML` property. For example:
 
