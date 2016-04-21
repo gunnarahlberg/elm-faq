@@ -173,7 +173,7 @@ This arises because `Signal.foldp` does not use the initial value of its input s
 One solution is to use the `foldp'` function from the Apanatshka/elm-signal-extra package, as follows:
 
 ```haskell
-model = Signal.Extra.foldp' (\d s -> {s | window <- d}) (\d -> { window = d }) Window.dimensions
+model = Signal.Extra.foldp' (\d s -> {s | window = d}) (\d -> { window = d }) Window.dimensions
 ```
 
 Whereas `foldp` takes an initial value parameter, `foldp'` takes instead a function from the initial value of the input signal to the initial value returned by `foldp'`.
