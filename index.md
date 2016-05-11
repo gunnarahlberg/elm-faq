@@ -2,8 +2,12 @@
 title: Elm FAQ
 layout: page
 ---
-Here are some common questions on the Elm IRC channel and on the mailing lists.
+Here are some common questions on the Elm Slack, Elm IRC channel and on the mailing lists.
 Contributions to [this document](https://github.com/elm-community/elm-faq) are welcome.
+
+This document largely concerns Elm version 0.16.
+See the [Elm 0.17 FAQ](17.html) about the conversion to Elm version 0.17.
+
 
 ### What is the difference between `type` and `type alias`?
 
