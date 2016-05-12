@@ -2,11 +2,21 @@
 title: Elm FAQ
 layout: page
 ---
-Here are some common questions on the Elm Slack, Elm IRC channel and on the mailing lists.
-Contributions to [this document](https://github.com/elm-community/elm-faq) are welcome.
 
-This document largely concerns Elm version 0.16.
-See the [Elm 0.17 FAQ](17.html) about the conversion to Elm version 0.17.
+**This page is mostly for folks *learning* Elm.** It aggregates questions that are commonly
+asked on [the Slack channel][slack], [the IRC channel][irc], or [the mailing list][list].
+Those are all friendly and helpful places to go if you do not find the answer to your
+question here!
+
+[slack]: http://elmlang.herokuapp.com/
+[irc]: http://webchat.freenode.net/?channels=elm
+[list]: https://groups.google.com/forum/#!forum/elm-discuss
+
+> **Note 1:** Contributions to [this document](https://github.com/elm-community/elm-faq)
+> are welcome!
+>
+> **Note 2:** This document largely concerns Elm 0.16. See the [Elm 0.17 FAQ](17.html)
+> about upgrading to Elm 0.17.
 
 
 ### What is the difference between `type` and `type alias`?
