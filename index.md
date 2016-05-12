@@ -9,6 +9,9 @@ This document largely concerns Elm version 0.16.
 See the [Elm 0.17 FAQ](17.html) about the conversion to Elm version 0.17.
 
 
+
+<br>
+
 ### What is the difference between `type` and `type alias`?
 
 `type` defines and names a new type (which behaves like an enum with data
@@ -17,6 +20,9 @@ attached), and `type alias` gives a name to an existing type.
 `type alias` isn't creating a distinct type, it is literally just giving a name to an existing type. A type alias will save you keystrokes, but do nothing more. [ref](https://groups.google.com/forum/#!topic/elm-discuss/YgRqI5s2S7Y)
 
 
+
+<br>
+
 ### Why does elm-repl (or elm-make) report "cannot find module 'Html'"?
 You need to install the Html module:
 
@@ -24,14 +30,23 @@ You need to install the Html module:
 
 Several modules are [available by default](http://package.elm-lang.org/packages/elm-lang/core/latest) in the base Elm tools but other common modules like Html have to be installed in the working directory before they can be used in elm-make, elm-repl, and elm-reactor.
 
+
+<br>
+
 ### Why does elm-repl report a syntax problem for any type annotation, such as for `fib : Int -> Int`?
 
 elm-repl does not support type annotations at all. If you try you'll see a "syntax problem" message saying something like "I ran into something unexpected when parsing your code!" and pointing to the colon.
 
 To use type annotations you will have to use elm-reactor or [elm-lang.org/try](http://elm-lang.org/try), or build and run a complete app.
 
+
+<br>
+
 ### How do I know what package name to use for `elm package install`?
 Search on [package.elm-lang.org](http://package.elm-lang.org/) for the module name and use the package name that you find there.
+
+
+<br>
 
 ### How can I write debugging information to the console?
 Wrap any value with `Debug.log “some message”` and that message and the value will be written to the javascript console every time the value is evaluated. For example:
@@ -49,9 +64,15 @@ _ = Debug.log "my message" someValue
 Also see [`Debug.crash`](http://package.elm-lang.org/packages/elm-lang/core/latest/Debug#crash)
 which gets special treatment from the compiler to provide additional information in the output.
 
+
+<br>
+
 ### How do I generate an Action as an Effect?
 
     Effects.task (Task.succeed SomeAction)
+
+
+<br>
 
 ### How do I install an older version of Elm, 0.15.1 for example?
 
@@ -59,10 +80,16 @@ which gets special treatment from the compiler to provide additional information
 
 If you need to switch between multiple versions of elm, consider [elmenv](https://github.com/sonnym/elmenv).
 
+
+<br>
+
 ### What does `=>` mean?
 A common idiom is to define the `(=>)` operator as a synonym for the `(,)` operator that constructs tuples. This makes a shorthand for long lists of tuple pairs, often used with the Html.style property.  So `["color" => "red", "padding" => "2px"]` means `[("color", "red"), ("padding", "2px")]`.
 
 Note: Operators cannot be defined in elm-repl.
+
+
+<br>
 
 ### How can I output literal HTML and avoid escaping of entities?
 Use the `innerHTML` property. For example:
@@ -71,9 +98,15 @@ Use the `innerHTML` property. For example:
 span [ property "innerHTML" (Json.Encode.string "&copy;") ] []
 ```
 
+
+<br>
+
 ### What does `()` mean?
 
 It is the empty tuple or [unit type](https://en.wikipedia.org/wiki/Unit_type). It serves much like "void", "null", or "None" in other languages.
+
+
+<br>
 
 ### What good is the `<|` operator if it is just function application?
 
@@ -83,10 +116,16 @@ It has lower precedence than function application expressed by adjacency (e.g. `
 
 Note: The `<|` operator is essentially the same as `$` in Haskell.
 
+
+<br>
+
 ### What are the Elm operator precedences and associativities?
 
 See an [Elm operator precedence table](operators.html).
 See also [Basics.elm](https://github.com/elm-lang/core/blob/master/src/Basics.elm).
+
+
+<br>
 
 ### Why isn't my StartApp-based program running any tasks?
 
@@ -98,11 +137,17 @@ port tasks =
     app.tasks
 ```
 
+
+<br>
+
 ### Why doesn't the `<~` operator work?
 
 It was removed in Elm version 0.16. You can still get it (or the equivalent `andMap`) from
 [Signal.Extra](http://package.elm-lang.org/packages/Apanatshka/elm-signal-extra/latest/Signal-Extra)
 instead.
+
+
+<br>
 
 ### How can I use multiple Elm programs on the same page?
 
@@ -112,11 +157,17 @@ You can compile multiple modules into a single elm.js and then instantiate whate
 
 [^multipleModules]: Use of multiple main modules in one application is discussed [here](https://groups.google.com/d/msg/elm-discuss/eEJgNnl99ps/keWXnn1KCwAJ).
 
+
+<br>
+
 ### Why doesn't the Elm compiler find the Native code in a module that I cloned from github?
 
 To use native code not installed by `elm-package` you need to add this to your elm-package.json file:
 
     "native-modules": true,
+
+
+<br>
 
 ### Why, when I import a module that defines a type, does the compiler know about the type name but not its constructors?
 
@@ -132,6 +183,9 @@ Simillarly, the module itself must export the constructors.
 
 However, there are reasons for [keeping tags and record constructors secret](http://package.elm-lang.org/help/design-guidelines#keep-tags-and-record-constructors-secret).
 
+
+<br>
+
 ### Where can I use type annotations?
 
 In addition to the top-level, type annotations can also be applied to `let` expressions.
@@ -145,8 +199,14 @@ in
   hypotenuse 3 4
 ```
 
+
+<br>
+
 ### How can I join the elmlang.slack.com community?
 Sign up at [elmlang.herokuapp.com](http://elmlang.herokuapp.com/).
+
+
+<br>
 
 ### How can I recover when elm-make fails with errors like "... openFile: does not exist"?
 
@@ -154,9 +214,15 @@ That can happen when switching between elm versions. Try removing all of elm-stu
 
     rm -r elm-stuff/build-artifacts
 
+
+<br>
+
 ### How do I install an Elm package that has not been published to packages.elm-lang.org for use in my project?
 
 Clone the package into a separate directory and add its directory path to the `source-directories` section of the elm-package.json file for your project. As usual, you will also have to install any dependencies of the package. If the package includes any native javascript code you will have to also add `native-module: true` to elm-package.json.
+
+
+<br>
 
 ### Why doesn't my application get the initial value of Window.dimensions?
 
@@ -184,6 +250,9 @@ Whereas `foldp` takes an initial value parameter, `foldp'` takes instead a funct
 
 Since StartApp uses `foldp` this problem with initial values can arise when it is used. Also, the problem is not specific to Window.dimensions; it can arise for any input signal whose initial value is of interest.
 
+
+<br>
+
 ### How can I parse Json into Elm data?
 
 Currently you have to write the [parsing
@@ -198,14 +267,23 @@ There are additional Json parsing tools in the [elm-json-extra](http://package.e
 
 The [Elm Json Decode interpreter](http://simonh1000.github.io/decoder/) is an online tool allowing you to experiment with decoders and test them in a simple context.
 
+
+<br>
+
 ### How can I report a compiler error message that could be better?
 
 Report the problem at the [error-message-catalog issue tracker](https://github.com/elm-lang/error-message-catalog/issues)
 with an [short, self-contained, correct, example](http://sscce.org/) showing both the program and the problematic error messages.
 
+
+<br>
+
 ### Does Elm have HashMaps?
 
 The core [Dict](http://package.elm-lang.org/packages/elm-lang/core/latest/Dict) package provides a dictionary mapping unique keys to values. There are some restrictions on key value types; in particular, records cannot be keys.
+
+
+<br>
 
 ### Why is my app failing immediately saying "Cannot read property 'make' of undefined"?
 
