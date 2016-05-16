@@ -208,7 +208,7 @@ That can happen when switching between elm versions. Try removing all of elm-stu
 
 ### How do I install an Elm package that has not been published to packages.elm-lang.org for use in my project?
 
-Clone the package into a separate directory and add its directory path to the `source-directories` section of the elm-package.json file for your project. As usual, you will also have to install any dependencies of the package. If the package includes any native javascript code you will have to also add `native-module: true` to elm-package.json.
+Clone the package into a separate directory and add its directory path to the `source-directories` section of the elm-package.json file for your project. As usual, you will also have to install any dependencies of the package. If the package includes any native javascript code you will have to also add `native-modules: true` to elm-package.json.
 
 
 
