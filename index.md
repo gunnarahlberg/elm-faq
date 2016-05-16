@@ -12,13 +12,12 @@ question here!
 [irc]: http://webchat.freenode.net/?channels=elm
 [list]: https://groups.google.com/forum/#!forum/elm-discuss
 
-> **Note 1:** Contributions to [this document](https://github.com/elm-community/elm-faq)
-> are welcome!
->
-> **Note 2:** This document largely concerns Elm 0.16. See the [Elm 0.17 FAQ](17.html)
-> about upgrading to Elm 0.17.
+* Contributions to [this document](https://github.com/elm-community/elm-faq)
+  are welcome!
 
-
+* This document is about the current version of Elm (0.17). See also the
+  [Elm 0.17 FAQ](17.html) about upgrading to Elm 0.17. See the [Elm 0.16 FAQ](16.html)
+  about that older version of Elm.
 
 
 ### What is the difference between `type` and `type alias`?
@@ -34,7 +33,7 @@ attached), and `type alias` gives a name to an existing type.
 ### Why does elm-repl (or elm-make) report "cannot find module 'Html'"?
 You need to install the Html module:
 
-    elm package install evancz/elm-html
+    elm package install elm-lang/html
 
 Several modules are [available by default](http://package.elm-lang.org/packages/elm-lang/core/latest) in the base Elm tools but other common modules like Html have to be installed in the working directory before they can be used in elm-make, elm-repl, and elm-reactor.
 
@@ -71,15 +70,9 @@ which gets special treatment from the compiler to provide additional information
 
 
 
-### How do I generate an Action as an Effect?
+### How do I install an older version of Elm, 0.16 for example?
 
-    Effects.task (Task.succeed SomeAction)
-
-
-
-### How do I install an older version of Elm, 0.15.1 for example?
-
-    npm install -g elm@0.15.1
+    npm install -g elm@0.16
 
 If you need to switch between multiple versions of elm, consider [elmenv](https://github.com/sonnym/elmenv).
 
@@ -124,26 +117,6 @@ See also [Basics.elm](https://github.com/elm-lang/core/blob/master/src/Basics.el
 
 
 
-### Why isn't my StartApp-based program running any tasks?
-
-You need to set `app.port`.
-
-```haskell
-port tasks : Signal (Task.Task Never ())
-port tasks =
-    app.tasks
-```
-
-
-
-### Why doesn't the `<~` operator work?
-
-It was removed in Elm version 0.16. You can still get it (or the equivalent `andMap`) from
-[Signal.Extra](http://package.elm-lang.org/packages/Apanatshka/elm-signal-extra/latest/Signal-Extra)
-instead.
-
-
-
 ### How can I use multiple Elm programs on the same page?
 
 You can compile multiple modules into a single elm.js and then instantiate whatever module you need on the appropriate div. [^multipleModules]
@@ -172,7 +145,7 @@ Just exposing `MyType` without the `(..)` will leave the constructors undefined.
 
 Simillarly, the module itself must export the constructors.
 
-    module MyModule (MyType(..)) where
+    module MyModule exposing (MyType(..))
 
 However, there are reasons for [keeping tags and record constructors secret](http://package.elm-lang.org/help/design-guidelines#keep-tags-and-record-constructors-secret).
 
@@ -212,34 +185,6 @@ Clone the package into a separate directory and add its directory path to the `s
 
 
 
-### Why doesn't my application get the initial value of Window.dimensions?
-
-For example, given this:
-
-```haskell
-modelInit = { window = (-1,-1) }
-
-main = Signal.map Element.show model
-
-model = Signal.foldp (\d s -> {s | window = d}) modelInit Window.dimensions
-```
-
-the displayed value will remain at "{ window = (-1,-1) }" until the window is resized, at which time the display tracks all changes.
-
-This arises because `Signal.foldp` does not use the initial value of its input signal (`Window.dimensions` in this case).
-
-One solution is to use the `foldp'` function from the Apanatshka/elm-signal-extra package, as follows:
-
-```haskell
-model = Signal.Extra.foldp' (\d s -> {s | window = d}) (\d -> { window = d }) Window.dimensions
-```
-
-Whereas `foldp` takes an initial value parameter, `foldp'` takes instead a function from the initial value of the input signal to the initial value returned by `foldp'`.
-
-Since StartApp uses `foldp` this problem with initial values can arise when it is used. Also, the problem is not specific to Window.dimensions; it can arise for any input signal whose initial value is of interest.
-
-
-
 ### How can I parse Json into Elm data?
 
 Currently you have to write the [parsing
@@ -267,19 +212,6 @@ with an [short, self-contained, correct, example](http://sscce.org/) showing bot
 
 The core [Dict](http://package.elm-lang.org/packages/elm-lang/core/latest/Dict) package provides a dictionary mapping unique keys to values. There are some restrictions on key value types; in particular, records cannot be keys.
 
-
-
-### Why is my app failing immediately saying "Cannot read property 'make' of undefined"?
-
-That can happen if you write custom Javascript code to call `Elm.embed()` or `Elm.fullscreen()` and the application name used there (the first parameter) does not match the main module name.
-
-For example, if Foo.elm contains the `main` function for your app then your Javascript code should call it like this:
-
-```javascript
-app = Elm.embed(Elm.Foo, ...)
-```
-
-If you use a name other than `Elm.Foo` there you will likely get that "Cannot read property" error.
 
 ## Footnotes
 

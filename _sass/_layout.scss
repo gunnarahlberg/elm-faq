@@ -223,6 +223,9 @@
         @include media-query($on-laptop) {
             font-size: 28px;
         }
+
+	margin-top: 2em;
+
     }
 
     h3 {
