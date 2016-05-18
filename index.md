@@ -213,5 +213,15 @@ with an [short, self-contained, correct, example](http://sscce.org/) showing bot
 The core [Dict](http://package.elm-lang.org/packages/elm-lang/core/latest/Dict) package provides a dictionary mapping unique keys to values. There are some restrictions on key value types; in particular, records cannot be keys.
 
 
+### Why does my app fail immediately with a console error of "Uncaught TypeError: Cannot read property 'appendChild' of null"?
+
+Make sure that you are calling Elm's javascript `embed` function *after* the
+referenced container has been defined in the HTML file.
+
+Similarly, Elm's `fullscreen` function should be called only after the page body has started.
+
+Good practice is to call `embed` or `fullscreen` at the end of the document body.
+
+
 ## Footnotes
 
