@@ -4,3 +4,15 @@
     border-collapse: collapse;
 }
 
+table.task-conversions {
+    margin-bottom: 2em;
+    border-top: 1px solid lightgrey;
+    border-bottom: 1px solid lightgrey;
+    code {
+	font-size: 80%;
+    }
+    td {
+	padding-top: 1em;
+	padding-bottom: 1em;
+    }
+}
