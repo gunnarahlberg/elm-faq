@@ -5,6 +5,7 @@ layout: page
 
 Here are some ways to convert Elm 0.16 code that uses `Effects.task` into Elm 0.17.
 
+The cases are sorted by priority, so use the first one that applies to your code.
 
 <table class="task-conversions">
     <tr>
@@ -16,16 +17,12 @@ Here are some ways to convert Elm 0.16 code that uses `Effects.task` into Elm 0.
 	<td><code>task |> Task.perform (always Nothing) Just</code></td>
     </tr>
     <tr>
-	<td><code>task |> Task.toMaybe |> Task.map action |> Effects.task</code></td>
-	<td><code>task |> Task.toMaybe |> Task.perform never action</code></td>
-    </tr>
-    <tr>
 	<td><code>task |> Task.toResult |> Effects.task</code></td>
 	<td><code>task |> Task.perform Err Ok</code></td>
     </tr>
     <tr>
-	<td><code>task |> Task.toResult |> Task.map action |> Effects.task</code></td>
-	<td><code>task |> Task.toResult |> Task.perform never action</code></td>
+	<td><code>task |> Task.map action |> Effects.task</code></td>
+	<td><code>task |> Task.perform never action</code></td>
     </tr>
     <tr>
 	<td><code>task |> Effects.task</code></td>
