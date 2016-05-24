@@ -141,17 +141,23 @@ To use native code not installed by `elm-package` you need to add this to your e
 
 ### Why, when I import a module that defines a type, does the compiler know about the type name but not its constructors?
 
-You need to import the module like this:
+You need to import the module in one of the following ways:
 
-    import MyModule exposing (MyType(..))
+    import MyModule exposing (MyType(..)) -- exposes all constructors
+    import MyModule exposing (MyType(MyConstructor)) -- exposes only MyConstructor
 
-Just exposing `MyType` without the `(..)` will leave the constructors undefined.
+Just exposing `MyType` without the `(..)` will leave the constructors undefined, while exposing `(MyConstructor)` will expose `MyConstructor` but hide `AnotherConstructor`.
 
-Simillarly, the module itself must export the constructors.
+Similarly, the module itself must export the constructors.
 
-    module MyModule exposing (MyType(..))
+    module MyModule exposing (MyType(..)) -- exposes all constructors
+    module MyModule exposing (MyType(MyConstructor)) -- exposes only MyConstructor
 
 However, there are reasons for [keeping tags and record constructors secret](http://package.elm-lang.org/help/design-guidelines#keep-tags-and-record-constructors-secret).
+
+You can also choose to export a type without exporting any constructors like this (just make sure you expose some other way of creating values of your type):
+
+    module MyModule exposing (MyType, myOtherFunctions)
 
 
 
