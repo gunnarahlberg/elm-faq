@@ -22,16 +22,16 @@ The cases are sorted by priority, so use the first one that applies to your code
     </tr>
     <tr>
 	<td><code>task |> Task.map action |> Effects.task</code></td>
-	<td><code>task |> Task.perform never action</code></td>
+	<td><code>task |> Task.Extra.performFailproof action</code></td>
     </tr>
     <tr>
 	<td><code>task |> Effects.task</code></td>
-	<td><code>task |> Task.perform never identity</code></td>
+	<td><code>task |> Task.Extra.performFailproof identity</code></td>
     </tr>
 </table>
 
 
-The function `never` used in two places above is from [elm-community/basics-extra](http://package.elm-lang.org/packages/elm-community/basics-extra/latest).
+The function `performFailproof` used in two places above is from package [NoRedInk/elm-task-extra](http://package.elm-lang.org/packages/NoRedInk/elm-task-extra).
 
 This recommendation comes from an
 [elm-discuss posting](https://groups.google.com/d/msg/elm-discuss/gkdCrioDsUQ/cJn5-n6fFQAJ)
