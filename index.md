@@ -233,5 +233,14 @@ Similarly, Elm's `fullscreen` function should be called only after the page body
 Good practice is to call `embed` or `fullscreen` at the end of the document body.
 
 
+### How can I load CSS (or other resources) in elm-reactor?
+
+That is not currently possible because elm-reactor now serves other files as plaintext.
+Consider using other hot-reload tools such as
+[elm-live](https://github.com/tomekwi/elm-live),
+[elm-hot-loader](https://github.com/fluxxu/elm-hot-loader) (for use with webpack),
+or [devd](https://github.com/cortesi/devd).
+
+
 ## Footnotes
 
