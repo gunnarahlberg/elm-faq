@@ -2,7 +2,7 @@
 title: Elm (language) FAQ
 description: > # this means to ignore newlines until "baseurl:"
   Unofficial FAQ for the Elm language.
-baseurl: "/elm-faq" # the subpath of your site, e.g. /blog/
+#baseurl: "/elm-faq" # the subpath of your site, e.g. /blog/
 #url: "http://yourdomain.com" # the base hostname & protocol for your site
 github_username:  elm-community
 
