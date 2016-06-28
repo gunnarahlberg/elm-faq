@@ -3205,11 +3205,10 @@ function toEffect(isCmd, home, taggers, value)
 {
 	function applyTaggers(x)
 	{
-		var temp = taggers;
-		while (temp)
+		while (taggers)
 		{
-			x = temp.tagger(x);
-			temp = temp.rest;
+			x = taggers.tagger(x);
+			taggers = taggers.rest;
 		}
 		return x;
 	}
@@ -5083,10 +5082,7 @@ function badOneOf(problems)
 	return { tag: 'oneOf', problems: problems };
 }
 
-function bad(msg)
-{
-	return { tag: 'fail', msg: msg };
-}
+var bad = { tag: 'fail' };
 
 function badToString(problem)
 {
@@ -5122,8 +5118,7 @@ function badToString(problem)
 
 			case 'fail':
 				return 'I ran into a `fail` decoder'
-					+ (context === '_' ? '' : ' at ' + context)
-					+ ': ' + problem.msg;
+					+ (context === '_' ? '' : ' at ' + context);
 		}
 	}
 }
@@ -5170,19 +5165,14 @@ function runHelp(decoder, value)
 				: badPrimitive('a Bool', value);
 
 		case 'int':
-			if (typeof value !== 'number') {
-				return badPrimitive('an Int', value);
-			}
+			var isNotInt =
+				typeof value !== 'number'
+				|| !(-2147483647 < value && value < 2147483647 && (value | 0) === value)
+				|| !(isFinite(value) && !(value % 1));
 
-			if (-2147483647 < value && value < 2147483647 && (value | 0) === value) {
-				return ok(value);
-			}
-
-			if (isFinite(value) && !(value % 1)) {
-				return ok(value);
-			}
-
-			return badPrimitive('an Int', value);
+			return isNotInt
+				? badPrimitive('an Int', value)
+				: ok(value);
 
 		case 'float':
 			return (typeof value === 'number')
@@ -5262,7 +5252,7 @@ function runHelp(decoder, value)
 		case 'key-value':
 			if (typeof value !== 'object' || value === null || value instanceof Array)
 			{
-				return badPrimitive('an object', value);
+				return err('an object', value);
 			}
 
 			var keyValuePairs = _elm_lang$core$Native_List.Nil;
@@ -5351,7 +5341,7 @@ function runHelp(decoder, value)
 			return badOneOf(errors);
 
 		case 'fail':
-			return bad(decoder.msg);
+			return bad;
 
 		case 'succeed':
 			return ok(decoder.msg);
@@ -7204,15 +7194,14 @@ var _elm_lang$html$Html_Events$Options = F2(
 
 var _user$project$Filter$match = F2(
 	function (pattern, section) {
-		return _elm_lang$core$Native_Utils.eq(
-			_elm_lang$core$String$toLower(pattern),
-			pattern) ? (A2(
+		var pattern$ = _elm_lang$core$String$toLower(pattern);
+		return A2(
 			_elm_lang$core$String$contains,
-			pattern,
+			pattern$,
 			_elm_lang$core$String$toLower(section.title)) || A2(
 			_elm_lang$core$String$contains,
-			pattern,
-			_elm_lang$core$String$toLower(section.content))) : (A2(_elm_lang$core$String$contains, pattern, section.title) || A2(_elm_lang$core$String$contains, pattern, section.content));
+			pattern$,
+			_elm_lang$core$String$toLower(section.content));
 	});
 var _user$project$Filter$filterSections = F2(
 	function (filter, sections) {
