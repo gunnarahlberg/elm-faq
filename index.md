@@ -89,6 +89,11 @@ Note: Operators cannot be defined in elm-repl.
 
 
 
+### What's the difference between `Html Msg` and `Html msg`?
+`msg` is a placeholder used when the HTML doesn't send any messages of type `Msg` (as in `type Msg = ...`). This is just as `a` is used as a placeholder in `List a` when the list is of any type, rather than of strings (`List String`) or integers (`List Int`) etc.. `msg` means "message of any type".
+
+
+
 ### How can I output literal HTML and avoid escaping of entities?
 Use the `innerHTML` property. For example:
 
