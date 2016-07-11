@@ -246,6 +246,8 @@ Consider using other hot-reload tools such as
 [elm-hot-loader](https://github.com/fluxxu/elm-hot-loader) (for use with webpack),
 or [devd](https://github.com/cortesi/devd).
 
+The 0.17.1 release of Elm is reputed to fix this problem; elm-reactor serves resources such as CSS and HTML files correctly again.
+
 
 ## Footnotes
 
