@@ -249,5 +249,16 @@ or [devd](https://github.com/cortesi/devd).
 The 0.17.1 release of Elm fixes this problem; elm-reactor serves resources such as CSS and HTML files correctly again.
 
 
+### How does one render an HTML node conditionally?
+
+Use `Html.text ""` as an empty element. E.g.
+
+```haskell
+if someCondition then
+    Html.div [] [ {- ... some substantial Html value here ... -} ]
+else
+    Html.text ""
+```
+
 ## Footnotes
 
