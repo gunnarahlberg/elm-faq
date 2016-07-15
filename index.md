@@ -217,13 +217,11 @@ Other than for [data passed over ports](http://elm-lang.org/guide/interop#custom
 there, experts recommend writing the parser manually to be able to handle error
 cases).
 
-The [json-to-elm](https://github.com/eeue56/json-to-elm) tool is a Python script that generates Elm code to parse a given example of Json.
+The [json-to-elm](https://github.com/eeue56/json-to-elm) tool is a Python script that generates Elm code to parse a given example of Json. That tool is available online at [json2elm.com](http://json2elm.com).
 
 There are additional Json parsing tools in the [elm-json-extra](http://package.elm-lang.org/packages/circuithub/elm-json-extra/latest/Json-Decode-Extra) package.
 
 The [Elm Json Decode interpreter](http://simonh1000.github.io/decoder/) is an online tool allowing you to experiment with decoders and test them in a simple context.
-
-The online [json-to-elm](http://noredink.github.io/json-to-elm/) tool by NoRedInk derives Elm Json encoder and decoder expressions from a sample bit of Json data.
 
 
 ### How can I report a compiler error message that could be better?
