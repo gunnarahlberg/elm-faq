@@ -268,5 +268,39 @@ else
     Html.text ""
 ```
 
+### Does Elm have ad-hoc polymorphism or typeclasses?
+
+No. Elm provides three super-types that work like typeclasses:
+`number`, `comparable`, and `appendable`. [^compappend]
+The Elm language does not allow for defining our own super-types.
+
+[^compappend]: There is also `compappend` in the compiler but it does not appear to be exposed for use.
+
+The `number` type comprises Int and Float.
+
+The `comparable` type comprises Int, Float, Char, String, List, and tuples[^tuple_compare].
+
+[^tuple_compare]: Tuple comparison is supported only for tuples with 6 or fewer entries.
+
+The `appendable` type comprises String, List, and text[^text_append].
+
+[^text_append]: The compiler error messages refer to "text" being appendable; not sure what "text" means though. [FCY]
+
+When declaring types the names "number", and "comparable" and "appendable" serve as prefixes. For example, a function declared as
+
+```haskell
+f : number -> number -> String
+```
+
+means that `f` can take two Int values and return a String, or two Float values and return a String. It cannot take a combination of Int and Float though; the actual types have to be consistent.
+
+However, if declared as
+
+```haskell
+f : number1 -> number2 -> String
+```
+
+then it can also take an Int and a Float and return a String, or take a Float and an Int and return a String. The prefix gives the super-type that constrains the corresponding particular argument. The full super-type name, special prefix plus arbitrary (optional) suffix, determines whether the actual types have to be consistent.
+
 ## Footnotes
 
