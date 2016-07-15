@@ -135,6 +135,15 @@ You can compile multiple modules into a single elm.js and then instantiate whate
 [^multipleModules]: Use of multiple main modules in one application is discussed [here](https://groups.google.com/d/msg/elm-discuss/eEJgNnl99ps/keWXnn1KCwAJ).
 
 
+### Does the main module file have to be named "Main.elm"?
+
+No, that is just a convention. Any module containing a `main` function of type `Program Never` can be an entry point to an Elm program.
+
+For example, if both Foo.elm and Bar.elm contain an appropriate `main` function,
+compiling via "elm-make Foo.elm Bar.elm \-\-output elm.js" creates an elm.js file
+such that both `Elm.Foo.embed(someElement)` and
+`Elm.Bar.embed(someOtherElement)` can be used from the same HTML file.
+
 
 ### Why doesn't the Elm compiler find the Native code in a module that I cloned from github?
 
