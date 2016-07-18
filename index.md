@@ -302,5 +302,45 @@ f : number1 -> number2 -> String
 
 then it can also take an Int and a Float and return a String, or take a Float and an Int and return a String. The prefix gives the super-type that constrains the corresponding particular argument. The full super-type name, special prefix plus arbitrary (optional) suffix, determines whether the actual types have to be consistent.
 
+### Which special type variables are there, and how do they work?
+
+There are four special type vairables, which are `number`, `comparable`, `appendable`, and `compappend`. Please see question [Does Elm have ad-hoc polymorphism or typeclasses?](#does-elm-have-ad-hoc-polymorphism-or-typeclasses) for the details.
+
+These built-in type variables work differently from the ones defined by user defined. The main difference is these built-in type variables can only mean what it defined to mean. For example:
+
+```haskell
+type alias PlusFn t =
+  { fn: t -> t -> t
+  }
+```
+
+It defines a type alias `PlusFn` which has one field `fn` which is a function that accepts two parameters which are of type `t`, and return a value of the same type. So, we can define any function which take two arguments and return one value, as long as they are of the same type, as the value of the `fn` field.
+
+```haskell
+> PlusFn (\x y -> x + y)
+{ fn = <function> } : Repl.PlusFn number
+> PlusFn (\x y -> x ++ y)
+{ fn = <function> } : Repl.PlusFn appendable
+```
+
+However, if we change the name `t` to any built-in type variable, it will work differently. Let's say we change `t` to `number`, then `fn` must operate on `number`, i.e. either `Int` or `Float`. Since `Int` and `Float` don't support `(++)` operation, so the following code will not be valid any more:
+
+```haskell
+> PlusFn (\x y -> x ++ y)
+-- TYPE MISMATCH --------------------------------------------- repl-temp-000.elm
+
+The argument to function `PlusFn` is causing a mismatch.
+
+4|   PlusFn (\x y -> x ++ y)
+             ^^^^^^^^^^^^^^
+Function `PlusFn` is expecting the argument to be:
+
+    number -> number -> number
+
+But it is:
+
+    appendable -> appendable -> appendable
+```
+
 ## Footnotes
 
