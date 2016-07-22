@@ -223,6 +223,18 @@ There are additional Json parsing tools in the [elm-json-extra](http://package.e
 
 The [Elm Json Decode interpreter](http://simonh1000.github.io/decoder/) is an online tool allowing you to experiment with decoders and test them in a simple context.
 
+### How can I pass an object over ports?
+
+If you have a JS object, you have to tell Elm what types its values have. You can use a type alias to do this. So, for a [BigRational](https://github.com/peterolson/BigRational.js):
+
+```elm
+type alias BigRational = 
+    { num : { value : Int, sign : Bool, isSmall : Bool }
+    , numerator : { value : Int, sign : Bool, isSmall : Bool }
+    , denom : { value : Int, sign : Bool, isSmall : Bool }
+    , denominator : { value : Int, sign : Bool, isSmall : Bool }
+    }
+```
 
 ### How can I report a compiler error message that could be better?
 
