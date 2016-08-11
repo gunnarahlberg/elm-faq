@@ -268,7 +268,7 @@ elm-reactor; it is not automatically built or rebuilt on changes to the Elm sour
 When you click an Elm source file in elm-reactor it compiles just that file (and
 any dependencies) and sends back the generated javascript which then runs and
 displays the full page view of the program. So to add any CSS you have to do it
-in the Elm program itself. Here is an example (thanks to @pmadoc):
+in the Elm program itself. Here is an example (thanks to @pdamoc):
 
 ```elm
 import Html exposing (..)
@@ -298,11 +298,11 @@ For a more comprehensive solution, see the next question.
 Elm-reactor is *not* appropriate for that; it's geared toward simple pure-Elm applications.
 
 Consider using other hot-reload tools:
-
-* [elm-live](https://github.com/tomekwi/elm-live),
-* [elm-hot-loader](https://github.com/fluxxu/elm-hot-loader) (for use with webpack),
-* [elm-webpack-starter](https://github.com/moarwick/elm-webpack-starter), or
-* [devd](https://github.com/cortesi/devd).
+[elm-live](https://github.com/tomekwi/elm-live),
+[elm-hot-loader](https://github.com/fluxxu/elm-hot-loader),
+[elm-webpack-starter](https://github.com/moarwick/elm-webpack-starter),
+[gulp-elm](https://github.com/philopon/gulp-elm/tree/master/example), or
+[devd](https://github.com/cortesi/devd).
 
 
 ### How does one render an HTML node conditionally?
