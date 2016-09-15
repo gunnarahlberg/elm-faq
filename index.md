@@ -390,5 +390,21 @@ But it is:
     appendable -> appendable -> appendable
 ```
 
+### How can I change the value of a field in a record?
+
+You can't. Record values (like all Elm values) are immutable. However, you can
+*copy* a record value and change one or more of its field values while doing so. Here is an example in elm-repl:
+
+```
+> x = { name = "Chris", age = 30 }
+{ name = "Chris", age = 30 } : { name : String, age : number }
+> y = { x | age = x.age + 1 }
+{ name = "Chris", age = 31 } : { name : String, age : number }
+> y
+{ name = "Chris", age = 31 } : { name : String, age : number }
+> x
+{ name = "Chris", age = 30 } : { name : String, age : number }
+```
+
 ## Footnotes
 
