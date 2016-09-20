@@ -392,8 +392,10 @@ But it is:
 
 ### How can I change the value of a field in a record?
 
-You can't. Record values (like all Elm values) are immutable. However, you can
-*copy* a record value and change one or more of its field values while doing so. Here is an example in elm-repl:
+Strictly speaking, you can't. Record values (like all Elm values) are
+immutable. However, you can *copy* a record value and change one or
+more of its field values while doing so. Here is an example in
+elm-repl:
 
 ```
 > x = { name = "Chris", age = 30 }
@@ -405,6 +407,20 @@ You can't. Record values (like all Elm values) are immutable. However, you can
 > x
 { name = "Chris", age = 30 } : { name : String, age : number }
 ```
+
+### How can I change the value of a nested field?
+
+For example, given `model = { foo = { bar = 1 } }`, how does one update the value of the `bar` field?
+The expression `{ model | foo.bar = 2 }` will not compile.
+
+Here is an expression that returns a copy of `model` with `model.foo.bar` updated:
+
+`let foo = model.foo in { model | foo = { foo | bar = 2 } }`
+
+Or, perhaps more clearly, like this:
+
+`let fooBefore = model.foo in { model | foo = { fooBefore | bar = 2 } }`
+
 
 ## Footnotes
 
