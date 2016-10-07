@@ -421,6 +421,14 @@ Or, perhaps more clearly, like this:
 
 `let fooBefore = model.foo in { model | foo = { fooBefore | bar = 2 } }`
 
+If you need to do this in more than one place, another way is to use a helper function:
+
+```
+{ model | foo = updateHelp model.foo 2 }
+
+updateHelp foo int =
+  { foo | bar = int }
+```
 
 ## Footnotes
 
