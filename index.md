@@ -397,7 +397,7 @@ immutable. However, you can *copy* a record value and change one or
 more of its field values while doing so. Here is an example in
 elm-repl:
 
-```
+```haskell
 > x = { name = "Chris", age = 30 }
 { name = "Chris", age = 30 } : { name : String, age : number }
 > y = { x | age = x.age + 1 }
@@ -423,7 +423,7 @@ Or, perhaps more clearly, like this:
 
 If you need to do this in more than one place, another way is to use a helper function:
 
-```
+```haskell
 { model | foo = updateHelp model.foo 2 }
 
 updateHelp foo int =
