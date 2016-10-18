@@ -430,5 +430,61 @@ updateHelp foo int =
   { foo | bar = int }
 ```
 
+### Where are the `Cmd` and `Sub` types defined?
+
+They are defined in the core
+[Platform.Cmd](http://package.elm-lang.org/packages/elm-lang/core/4.0.0/Platform-Cmd)
+and
+[Platform.Sub](http://package.elm-lang.org/packages/elm-lang/core/4.0.0/Platform-Sub)
+modules.
+
+### What is this `! []` construct in the code?
+
+The `!` operator is defined as a convenience function in the [Platform-Cmd](http://package.elm-lang.org/packages/elm-lang/core/4.0.0/Platform-Cmd#!) module.
+
+Called as `model ! listOfCmds` it returns the `(model, cmd)` value needed as the return value of an `update` function.
+
+### What is the difference between `Cmd Msg` and `Cmd msg`?
+
+`Cmd Msg` is a type of command where the resulting messages are of type `Msg`.
+
+`Cmd msg` is a more general type of command where the resulting message type is not known. It could just as well be written as `Cmd a` or `Cmd x`.
+
+### Why does the compiler complain that "You are declaring port \`someName\` in a normal module."?
+
+Any module using ports must start with `port module` on the first line.
+
+### How do I generate a new message as a command?
+
+The package [shmookey/cmd-extra](http://package.elm-lang.org/packages/shmookey/cmd-extra/latest) provides a function to construct a `Cmd` yielding an arbitrary value:
+
+```haskell
+message : msg -> Cmd msg
+```
+
+However, this is often unnecessary. To handle a message produced by a call to `update` you may pass it straight back to `update` recursively. The package [ccapndave/elm-update-extra](http://package.elm-lang.org/packages/ccapndave/elm-update-extra/latest) provides helper functions for implementing this approach elegantly. 
+
+The latter approach is likely to be more efficient in most cases. The former option may be attractive when recursive calls to `update` could cause an infinite loop, or for authors of reusable components interested in creating a clean encapsulation of their library's internal behaviour.
+
+Without using any libraries, you may simply create and perform a task that always succeeds with a given message:
+
+```haskell
+Task.perform (\_ -> Debug.crash "This failure cannot happen.") identity (Task.succeed Test)
+```
+### What is the difference between Cmd and Task?
+
+- `Cmd` is just a bag (i.e. multiset) of chunks of data. It is a functor, but it is not applicative or monadic. This means all you can do is apply a function to all the entries in the bag with `map` and add to the bag with `batch`.
+
+- `Task` is a way doing things in sequence. It is monadic, meaning it has an `andThen` in the API. This means you can say "Do X, and depending on the result, do Y or Z." From there you can keep chaining things.
+
+The point of this bag of commands is that you can gather all the things that need to happen from your whole app and get them done. The point of a task is to describe a particular thing you want to happen.[^cmd-vs-task]
+
+[^cmd-vs-task]: From Evan's #elm-dev Slack posting, 2016-05-16.
+
+If you need to do any kind of chaining stuff, use `Task`, and don't turn your task chain into a `Cmd` until you have no more chaining stuff to do.
+This is why APIs generally expose `Task` instances rather than `Cmd`:  so you can do all the chaining you like, and you're in charge of finishing the job and turning whatever chain you've constructed into a `Cmd`.[^task-chaining]
+
+[^task-chaining]: From rtfeldman's #elm-dev Slack posting, 2016-05-16.
+
 ## Footnotes
 
