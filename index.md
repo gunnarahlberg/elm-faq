@@ -471,6 +471,7 @@ Without using any libraries, you may simply create and perform a task that alway
 ```haskell
 Task.perform (\_ -> Debug.crash "This failure cannot happen.") identity (Task.succeed Test)
 ```
+
 ### What is the difference between Cmd and Task?
 
 - `Cmd` is just a bag (i.e. multiset) of chunks of data. It is a functor, but it is not applicative or monadic. This means all you can do is apply a function to all the entries in the bag with `map` and add to the bag with `batch`.
