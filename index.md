@@ -90,7 +90,8 @@ Note: Operators cannot be defined in elm-repl.
 
 ### What does `(,)` mean?
 
-`(,)` is the tuple-forming operator in prefix form. It constructs a 2-tuple from its two arguments. Its type is
+`(,)` is the tuple-forming operator in prefix form[^tupleInfix].
+It constructs a 2-tuple from its two arguments. Its type is
 `a -> b -> (a, b)`.
 
 There are similar prefix operators for n-tuples. E.g, `(,,)` constructs a 3-tuple and `(,,,)` a 4-tuple.
@@ -103,7 +104,7 @@ The following expressions are true:
 (,,) "won" "too" "tree" == ("won", "too", "tree")
 ```
 
-Note that `,` (the single character, not the prefix form) is not really an infix operator by itself. It's used as a syntactic separator when constructing a tuple value like `(1, 2)`. But just `1 , 2` alone is not a valid expression.
+[^tupleInfix]: Note that `,` (the single character, not the prefix form) is not really an infix operator by itself. It's used as a syntactic separator when constructing a tuple value like `(1, 2)`. But just `1 , 2` alone is not a valid expression.
 
 
 ### What's the difference between `Html Msg` and `Html msg`?
