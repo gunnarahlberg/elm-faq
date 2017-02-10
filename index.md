@@ -505,5 +505,9 @@ This is why APIs generally expose `Task` instances rather than `Cmd`:  so you ca
 
 [^task-chaining]: From rtfeldman's #elm-dev Slack posting, 2016-05-16.
 
+### How do I build an `onChange` handler for a `<select>`?
+
+See [Building custom DOM event handlers in Elm](https://robots.thoughtbot.com/building-custom-dom-event-handlers-in-elm) for some examples of event handlers.
+
 ## Footnotes
 
