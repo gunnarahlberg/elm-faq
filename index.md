@@ -509,5 +509,11 @@ This is why APIs generally expose `Task` instances rather than `Cmd`:  so you ca
 
 See [Building custom DOM event handlers in Elm](https://robots.thoughtbot.com/building-custom-dom-event-handlers-in-elm) for some examples of event handlers.
 
+
+### What is "elm-community"?
+
+See the [Elm-community Manifesto](https://github.com/elm-community/Manifesto#mandate). The elm-community organization came about when some useful packages were no longer being maintained by their creators. The organization formed to make a new home for those packages. Elm-community packages are not inherently more reliable than others but are perhaps more likely to be supported in the long run. Elm-community packages are not a staging area for core. 
+
+
 ## Footnotes
 
